@@ -27,8 +27,29 @@ for (let product of Products) {
         default:
             discount = 0;
     }
-let promoprice = product.price * (1-discount);
-product.promoprice = parseFloat(promoprice.toFixed(2));
+let promoPrice = product.price * (1-discount);
+product.promoPrice = parseFloat(promoPrice.toFixed(2));
 }
 
 console.log(Products);
+
+// Step 4 Customer Type Adjustment
+
+let customerType = ["regular", "student", "senior"];
+let total = 0;
+
+    for (let product of Products) {
+        total += product.price;
+    }
+
+let extraDiscount = 0;
+
+if (customerType === "student") {
+    extraDiscount = 0.05;
+} else if (customerType === "senior") {
+    extraDiscount = 0.07;
+} else {
+    extraDiscount = 0;
+}
+
+let customerAdjustment = parseFloat((total * (1-extraDiscount)).toFixed(2));
